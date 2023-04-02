@@ -16,7 +16,7 @@ import colors from '../../styles/colors';
 import {useDispatch} from 'react-redux';
 import {addUser} from '../../redux/reducers/userReducer';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -70,7 +70,7 @@ const LoginScreen = () => {
           />
 
           <RowComponent styles={[{justifyContent: 'space-between'}]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
               <TextComponent text="Đăng ký" color="#3498db" />
             </TouchableOpacity>
             <TouchableOpacity>

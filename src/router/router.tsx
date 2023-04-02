@@ -1,8 +1,10 @@
 import auth from '@react-native-firebase/auth';
+import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import AuthNavigator from '../navigations/AuthNavigator';
+import HomeNavigator from '../navigations/HomeNavigator';
 import {addUser, userSelector} from '../redux/reducers/userReducer';
-import {HomeScreen, LoginScreen} from '../screens';
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,11 @@ const Router = () => {
   }, []);
 
   const userData = useSelector(userSelector);
-  return userData.uid ? <HomeScreen /> : <LoginScreen />;
+  return (
+    <NavigationContainer>
+      {userData.uid ? <HomeNavigator /> : <AuthNavigator />}
+    </NavigationContainer>
+  );
 };
 
 export default Router;

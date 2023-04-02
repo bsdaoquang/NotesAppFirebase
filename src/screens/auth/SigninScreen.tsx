@@ -10,7 +10,7 @@ import {
 import {globalStyle} from '../../styles/global';
 import auth from '@react-native-firebase/auth';
 
-const SigninScreen = () => {
+const SigninScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
@@ -82,7 +82,7 @@ const SigninScreen = () => {
             onChange={val => setConfirmPass(val)}
           />
           <RowComponent styles={[{justifyContent: 'space-between'}]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <TextComponent text="Đăng nhập" color="#3498db" />
             </TouchableOpacity>
           </RowComponent>
