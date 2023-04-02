@@ -8,13 +8,18 @@ import {
   TextComponent,
 } from '../../components';
 import {globalStyle} from '../../styles/global';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLoginWithEmail = () => {
-    console.log(email);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        console.log(user);
+      });
   };
 
   return (

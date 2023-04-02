@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {ContainerComponent, TextComponent} from '../components';
 import database from '@react-native-firebase/database';
+import {TouchableOpacity} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 const HomeScreen = () => {
   useEffect(() => {
@@ -25,6 +27,9 @@ const HomeScreen = () => {
   return (
     <ContainerComponent>
       <TextComponent text="HomeScreen" />
+      <TouchableOpacity onPress={() => auth().signOut()}>
+        <TextComponent text="Đăng xuất" />
+      </TouchableOpacity>
     </ContainerComponent>
   );
 };
