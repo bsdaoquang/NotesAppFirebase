@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+import fonts from './fonts';
+import colors from './colors';
 
 export const globalStyle = StyleSheet.create({
   container: {
@@ -9,6 +11,7 @@ export const globalStyle = StyleSheet.create({
   text: {
     fontSize: 14,
     color: '#212121',
+    fontFamily: fonts.regular,
   },
 
   rowCenter: {
@@ -21,6 +24,9 @@ export const globalStyle = StyleSheet.create({
     flex: 1,
     margin: 0,
     padding: 0,
+    fontFamily: fonts.regular,
+    fontSize: 14,
+    color: colors.text,
   },
 
   inputContainer: {

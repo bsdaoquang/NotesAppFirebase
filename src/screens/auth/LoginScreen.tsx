@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {Dimensions, TouchableOpacity, View} from 'react-native';
 import {
@@ -7,8 +8,11 @@ import {
   SectionComponent,
   TextComponent,
 } from '../../components';
+import fonts from '../../styles/fonts';
 import {globalStyle} from '../../styles/global';
-import auth from '@react-native-firebase/auth';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import colors from '../../styles/colors';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -28,7 +32,7 @@ const LoginScreen = () => {
         <SectionComponent>
           <TextComponent
             text="Login"
-            styles={[{fontWeight: '700'}]}
+            font={fonts.bold}
             size={28}
             color="#676767"
           />
@@ -37,14 +41,17 @@ const LoginScreen = () => {
 
         <SectionComponent>
           <InputComponent
+            preFix={<Entypo name="email" size={16} color={colors.desc} />}
             value={email}
             placeholder="Email"
             type="email-address"
             onChange={val => setEmail(val)}
+            allowClear
           />
           <InputComponent
+            preFix={<FontAwesome name="lock" size={16} color={colors.desc} />}
             value={password}
-            placeholder="Password"
+            placeholder="Mật khẩu"
             type="default"
             isSecure
             onChange={val => setPassword(val)}
@@ -52,20 +59,24 @@ const LoginScreen = () => {
 
           <RowComponent styles={[{justifyContent: 'space-between'}]}>
             <TouchableOpacity>
-              <TextComponent text="Signin" color="#3498db" />
+              <TextComponent text="Đăng ký" color="#3498db" />
             </TouchableOpacity>
             <TouchableOpacity>
-              <TextComponent text="Forget Pass?" color="#3498db" />
+              <TextComponent text="Quên mật khẩu?" color="#3498db" />
             </TouchableOpacity>
           </RowComponent>
         </SectionComponent>
-
         <SectionComponent>
           <RowComponent
             styles={[globalStyle.button]}
             onPress={handleLoginWithEmail}
           >
-            <TextComponent text="Login" size={18} color="#fafafa" font="bold" />
+            <TextComponent
+              text="Login"
+              size={18}
+              color="#fafafa"
+              font={fonts.semiBold}
+            />
           </RowComponent>
         </SectionComponent>
       </View>
