@@ -33,6 +33,7 @@ const InputComponent = (props: Props) => {
         onChangeText={val => onChange(val)}
         style={[globalStyle.input]}
         secureTextEntry={isSecure}
+        autoCapitalize="none"
       />
     </RowComponent>
   );

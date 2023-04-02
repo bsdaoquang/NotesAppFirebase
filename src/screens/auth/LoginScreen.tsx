@@ -1,12 +1,5 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Touchable,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
 import React, {useState} from 'react';
+import {Dimensions, TouchableOpacity, View} from 'react-native';
 import {
   ContainerComponent,
   InputComponent,
