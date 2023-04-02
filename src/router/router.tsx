@@ -1,13 +1,27 @@
 import auth from '@react-native-firebase/auth';
-import React, {useState} from 'react';
-import {HomeScreen, LoginScreen, SigninScreen} from '../screens';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {addUser, userSelector} from '../redux/reducers/userReducer';
+import {HomeScreen, LoginScreen} from '../screens';
 
-const router = () => {
-  const [uid, setUid] = useState('');
+const Router = () => {
+  const dispatch = useDispatch();
 
-  const user = auth().currentUser;
+  useEffect(() => {
+    const user = auth().currentUser;
 
-  return user ? <HomeScreen /> : <LoginScreen />;
+    if (user) {
+      dispatch(
+        addUser({
+          uid: user.uid,
+          fcmtoken: '',
+        }),
+      );
+    }
+  }, []);
+
+  const userData = useSelector(userSelector);
+  return userData.uid ? <HomeScreen /> : <LoginScreen />;
 };
 
-export default router;
+export default Router;

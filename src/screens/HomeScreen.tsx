@@ -3,6 +3,8 @@ import {ContainerComponent, TextComponent} from '../components';
 import database from '@react-native-firebase/database';
 import {TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import {useDispatch} from 'react-redux';
+import {addUser} from '../redux/reducers/userReducer';
 
 const HomeScreen = () => {
   useEffect(() => {
@@ -24,10 +26,25 @@ const HomeScreen = () => {
     }
   }, []);
 
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    auth()
+      .signOut()
+      .then(() => {
+        dispatch(
+          addUser({
+            uid: '',
+            fcmtoken: '',
+          }),
+        );
+      });
+  };
+
   return (
     <ContainerComponent>
       <TextComponent text="HomeScreen" />
-      <TouchableOpacity onPress={() => auth().signOut()}>
+      <TouchableOpacity onPress={handleLogout}>
         <TextComponent text="Đăng xuất" />
       </TouchableOpacity>
     </ContainerComponent>

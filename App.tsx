@@ -1,13 +1,16 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {HomeScreen} from './src/screens';
-import {globalStyle} from './src/styles/global';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 import Router from './src/router/router';
+import {HomeScreen} from './src/screens';
 
 function App(): JSX.Element {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Router />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </SafeAreaView>
   );
 }

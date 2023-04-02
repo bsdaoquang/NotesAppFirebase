@@ -1,4 +1,4 @@
-import auth from '@react-native-firebase/auth';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {Dimensions, TouchableOpacity, View} from 'react-native';
 import {
@@ -13,16 +13,28 @@ import {globalStyle} from '../../styles/global';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../../styles/colors';
+import {useDispatch} from 'react-redux';
+import {addUser} from '../../redux/reducers/userReducer';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleLoginWithEmail = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(user => {
-        console.log(user);
+      .then((userCredential: FirebaseAuthTypes.UserCredential) => {
+        if (userCredential) {
+          const user = userCredential.user;
+          dispatch(
+            addUser({
+              uid: user.uid,
+              fcmtoken: '',
+            }),
+          );
+        }
       });
   };
 
