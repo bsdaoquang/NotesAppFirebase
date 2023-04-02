@@ -1,10 +1,20 @@
-import {View, Text, TextInput, Touchable, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Touchable,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import React, {useState} from 'react';
 import {
   ContainerComponent,
   InputComponent,
+  RowComponent,
+  SectionComponent,
   TextComponent,
 } from '../../components';
+import {globalStyle} from '../../styles/global';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -16,16 +26,51 @@ const LoginScreen = () => {
 
   return (
     <ContainerComponent isScroll>
-      <InputComponent
-        value={email}
-        placeholder="Email"
-        type="email-address"
-        onChange={val => setEmail(val)}
-      />
+      <View style={[{marginTop: Dimensions.get('window').height * 0.25}]}>
+        <SectionComponent>
+          <TextComponent
+            text="Login"
+            styles={[{fontWeight: '700'}]}
+            size={28}
+            color="#676767"
+          />
+          <TextComponent text="Welcome to NotesApp" />
+        </SectionComponent>
 
-      <TouchableOpacity onPress={handleLoginWithEmail}>
-        <TextComponent text="Login" />
-      </TouchableOpacity>
+        <SectionComponent>
+          <InputComponent
+            value={email}
+            placeholder="Email"
+            type="email-address"
+            onChange={val => setEmail(val)}
+          />
+          <InputComponent
+            value={password}
+            placeholder="Password"
+            type="default"
+            isSecure
+            onChange={val => setPassword(val)}
+          />
+
+          <RowComponent styles={[{justifyContent: 'space-between'}]}>
+            <TouchableOpacity>
+              <TextComponent text="Signin" color="#3498db" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <TextComponent text="Forget Pass?" color="#3498db" />
+            </TouchableOpacity>
+          </RowComponent>
+        </SectionComponent>
+
+        <SectionComponent>
+          <RowComponent
+            styles={[globalStyle.button]}
+            onPress={handleLoginWithEmail}
+          >
+            <TextComponent text="Login" size={18} color="#fafafa" font="bold" />
+          </RowComponent>
+        </SectionComponent>
+      </View>
     </ContainerComponent>
   );
 };

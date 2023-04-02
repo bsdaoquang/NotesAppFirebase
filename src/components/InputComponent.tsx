@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import RowComponent from './RowComponent';
+import {globalStyle} from '../styles/global';
 
 interface Props {
   value?: string;
@@ -17,19 +18,21 @@ interface Props {
   onEnd?: () => void;
   styles?: StyleProp<ViewStyle>;
   type?: KeyboardTypeOptions;
+  isSecure?: boolean;
 }
 
 const InputComponent = (props: Props) => {
-  const {value, placeholder, onChange, onEnd, styles, type} = props;
+  const {value, placeholder, onChange, onEnd, styles, type, isSecure} = props;
 
   return (
-    <RowComponent styles={[styles]}>
+    <RowComponent styles={[globalStyle.inputContainer, styles]}>
       <TextInput
         keyboardType={type}
         value={value}
         placeholder={placeholder}
         onChangeText={val => onChange(val)}
-        style={[{flex: 1}]}
+        style={[globalStyle.input]}
+        secureTextEntry={isSecure}
       />
     </RowComponent>
   );

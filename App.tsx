@@ -6,7 +6,7 @@ import Router from './src/router/router';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView style={[globalStyle.container]}>
+    <SafeAreaView style={{flex: 1}}>
       <Router />
     </SafeAreaView>
   );

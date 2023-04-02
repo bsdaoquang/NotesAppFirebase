@@ -8,16 +8,34 @@ interface Props {
   size?: number;
   flex?: number;
   styles?: StyleProp<TextStyle>;
+  font?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | undefined;
 }
 
 const TextComponent = (props: Props) => {
-  const {text, color, size, flex, styles} = props;
+  const {text, color, size, flex, styles, font} = props;
 
   return (
     <Text
       style={[
         globalStyle.text,
-        {color: color ?? '#212121', fontSize: size ?? 14, flex: flex ?? 1},
+        {
+          color: color ?? '#212121',
+          fontSize: size ?? 14,
+          flex: flex ?? 0,
+          fontWeight: font,
+        },
         styles,
       ]}
     >
