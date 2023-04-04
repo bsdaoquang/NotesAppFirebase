@@ -8,6 +8,10 @@ export const globalStyle = StyleSheet.create({
     paddingHorizontal: 16,
   },
 
+  inner: {
+    paddingVertical: 16,
+  },
+
   text: {
     fontSize: 14,
     color: '#212121',
@@ -45,5 +49,16 @@ export const globalStyle = StyleSheet.create({
     backgroundColor: '#16a085',
     padding: 8,
     borderRadius: 100,
+  },
+
+  buttonInput: {
+    padding: 8,
+    backgroundColor: colors.gray1,
+    borderRadius: 100,
+  },
+
+  titleNote: {
+    fontSize: 18,
+    fontFamily: fonts.medium,
   },
 });
