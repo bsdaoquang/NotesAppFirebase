@@ -53,12 +53,29 @@ export const globalStyle = StyleSheet.create({
 
   buttonInput: {
     padding: 8,
-    backgroundColor: colors.gray1,
+    backgroundColor: colors.gray2,
     borderRadius: 100,
   },
 
   titleNote: {
     fontSize: 18,
     fontFamily: fonts.medium,
+  },
+
+  noteItem: {
+    padding: 8,
+    borderWidth: 1,
+    borderColor: colors.gray1,
+    marginBottom: 16,
+    borderRadius: 8,
+    shadowColor: '#585858',
+    backgroundColor: colors.white,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.08,
+    // shadowRadius: 4.59,
+    // elevation: 10,
   },
 });

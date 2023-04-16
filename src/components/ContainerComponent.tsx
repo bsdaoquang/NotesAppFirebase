@@ -52,7 +52,10 @@ const ContainerComponent = (props: Props) => {
         </RowComponent>
       )}
       {isScroll ? (
-        <ScrollView style={[globalStyle.container, styles]}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[globalStyle.container, styles]}
+        >
           {children}
         </ScrollView>
       ) : (
